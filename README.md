@@ -5,6 +5,8 @@
 ## Descripción General
 Esta aplicación permite a los usuarios convertir montos de una moneda a otra utilizando tasas de cambio en tiempo real obtenidas de la API de ExchangeRate. Las tasas se basan en el Dólar estadounidense (USD) y permiten la conversión entre varias monedas, como Peso argentino (ARS), Real brasileño (BRL), y Sol peruano (PEN).
 
+> 📚 **[Ver Documentación Completa](./docs/)** - Roadmap v2.0, Arquitectura, Guías de Implementación y más.
+
 ---
 
 ## Clases y Funcionalidades
@@ -216,24 +218,42 @@ Desarrollado por: [mysterio-wil](https://github.com/mysterio-wil)
 
 API de [ExchangeRate-API](https://exchangerate-api.com)
 
-# Mejoras para la siguiente versión.
+# Roadmap v2.0
 
-### Aquí tienes las 5 mejoras más relevantes:
+Para conocer el plan detallado de mejoras y nuevas funcionalidades, consulta la **[Documentación Completa del Roadmap v2.0](./docs/ROADMAP_V2.md)**.
 
-1. **Interfaz Gráfica de Usuario (GUI)**: Implementar una interfaz gráfica que facilite la interacción del usuario con la aplicación, mejorando la experiencia frente al uso de la consola.
+## Resumen de Mejoras Planificadas
 
-2. **Manejo de Errores Avanzado**: Agregar validaciones más robustas y manejo de excepciones para situaciones como respuestas erróneas de la API, falta de conexión a internet, o entradas de usuario no válidas.
+### 🔴 Fase 1 - Fundamentos (Crítico)
+1. **Externalizar API Key**: Mover la API key a configuración externa para mejorar la seguridad
+2. **Validación de Entrada Robusta**: Prevenir crashes con entradas inválidas
+3. **Persistencia del Historial**: Guardar historial en JSON para que persista entre sesiones
+4. **Manejo de Excepciones Mejorado**: Implementar jerarquía de excepciones personalizadas
 
-3. **Soporte para Múltiples Idiomas**: Incluir la opción de elegir el idioma, comenzando con soporte para español e inglés, para hacer la aplicación más accesible internacionalmente.
+### 🟡 Fase 2 - Funcionalidades (Importante)
+1. **Conversión entre Cualquier Par de Monedas**: Soporte para todas las monedas disponibles en la API
+2. **Caché de Tasas de Cambio**: Reducir llamadas a la API y mejorar rendimiento
+3. **Tests Unitarios**: Cobertura de código > 80%
+4. **Logging con SLF4J**: Sistema de logs estructurado
 
-4. **Historial Persistente**: Implementar almacenamiento del historial de conversiones en un archivo o base de datos, permitiendo que el historial se mantenga disponible incluso después de cerrar la aplicación.
+### 🟢 Fase 3 - UX (Deseable)
+1. **Interfaz Gráfica (JavaFX)**: GUI moderna e intuitiva
+2. **Soporte Multiidioma (i18n)**: Español e inglés
+3. **Gráficos de Tendencias**: Visualización de evolución de tasas
+4. **Modo Offline**: Funcionalidad básica sin conexión a internet
 
-5. **Conversión de Múltiples Monedas Simultáneamente**: Agregar una función que permita convertir una cantidad a varias monedas de forma simultánea, haciendo más eficiente el proceso para el usuario.
+**Total**: 135 tareas organizadas en 3 fases | **Duración Estimada**: 6 meses
 
-Existen otras opciones en el mercado de APIs de tasa de cambio que ofrecen versiones gratuitas, similares a ExchangeRate. A continuación, presentamos algunas alternativas adicionales para ampliar tu conocimiento:
+📖 **[Ver Roadmap Completo](./docs/ROADMAP_V2.md)** | **[Guía de Implementación Fase 1](./docs/IMPLEMENTATION_GUIDE_PHASE1.md)** | **[Lista de Tareas](./docs/TASK_LIST.md)**
 
-Open Exchange Rates - [Open Exchange Rates](https://openexchangerates.org/)
+---
 
-CoinGecko API - [Most Comprehensive Cryptocurrency API | CoinGecko](https://www.coingecko.com/api)
+## Recursos Adicionales
+
+Existen otras opciones en el mercado de APIs de tasa de cambio que ofrecen versiones gratuitas, similares a ExchangeRate:
+
+- Open Exchange Rates - [Open Exchange Rates](https://openexchangerates.org/)
+- CoinGecko API - [Most Comprehensive Cryptocurrency API | CoinGecko](https://www.coingecko.com/api)
+
 
 Cada una de estas APIs tiene su propia documentación y características, lo que proporciona una variedad de opciones para enriquecer tu experiencia en el desarrollo del Conversor de Monedas. Explora estas opciones y elige aquella que mejor se adapte a tus objetivos y requisitos específicos.
