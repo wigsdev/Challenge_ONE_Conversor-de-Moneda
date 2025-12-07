@@ -1,0 +1,14 @@
+# Configuración de API
+# Obtén tu API key en: https://www.exchangerate-api.com/
+api.key=TU_API_KEY_AQUI
+api.url=https://v6.exchangerate-api.com/v6/
+api.timeout=5000
+api.max.retries=3
+
+# Configuración de caché
+cache.enabled=true
+cache.expiration.minutes=60
+
+# Configuración de historial
+historial.auto.save=true
+historial.file.path=data/historial.json

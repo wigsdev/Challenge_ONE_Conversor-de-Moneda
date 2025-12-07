@@ -13,7 +13,7 @@ public class ConversorDeMoneda {
     public double convertir(String monedaOrigen, String monedaDestino, double monto) {
         try {
             // Obtener la tasa de cambio en formato JSON
-            String respuestaJson = consultaTasaDeCambio.obtenerTasaDeCambio(consultaTasaDeCambio.getUrlApi());
+            String respuestaJson = consultaTasaDeCambio.obtenerTasaDeCambio();
 
             // Parsear la respuesta JSON para obtener la tasa de cambio
             JsonObject jsonObject = JsonParser.parseString(respuestaJson).getAsJsonObject();

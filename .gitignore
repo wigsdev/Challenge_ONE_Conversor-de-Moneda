@@ -3,6 +3,9 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+# Archivos de configuración con datos sensibles
+config.properties
+
 ### Eclipse ###
 .apt_generated
 .classpath
