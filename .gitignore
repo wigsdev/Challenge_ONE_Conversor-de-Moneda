@@ -6,6 +6,10 @@ out/
 # Archivos de configuración con datos sensibles
 config.properties
 
+# Datos generados
+data/
+logs/
+
 ### Eclipse ###
 .apt_generated
 .classpath

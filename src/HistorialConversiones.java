@@ -1,32 +1,96 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestiona el historial de conversiones de moneda.
+ * Utiliza persistencia en JSON para mantener el historial entre sesiones.
+ */
 public class HistorialConversiones {
-    private List<String> historial;
+    private List<Conversion> conversiones;
+    private final String rutaArchivo;
+    private final boolean autoGuardar;
 
+    /**
+     * Constructor que carga el historial desde archivo
+     */
     public HistorialConversiones() {
-        historial = new ArrayList<>();
-    }
-
-    // Agregar una entrada al historial
-    public void agregarConversion(String monedaOrigen, String monedaDestino, double montoOrigen, double montoDestino) {
-        String timestamp = java.time.LocalDateTime.now().toString();
-        String entrada = String.format("%s: %f %s => %f %s", timestamp, montoOrigen, monedaOrigen, montoDestino, monedaDestino);
-        historial.add(entrada);
-    }
-
-    // Mostrar el historial de conversiones
-    public void mostrarHistorial() {
-        System.out.println("Historial de Conversiones:");
-        System.out.printf("%-25s %-20s %-20s %-20s%n", "Fecha y Hora", "Monto Origen", "Moneda Origen", "Moneda Destino");
-        System.out.println("---------------------------------------------------------------------------");
-        for (String entrada : historial) {
-            String[] partes = entrada.split(": ");
-            String timestamp = partes[0];
-            String[] conversion = partes[1].split(" => ");
-            String[] montoOrigen = conversion[0].trim().split(" ");
-            String[] montoDestino = conversion[1].trim().split(" ");
-            System.out.printf("%-25s %-20s %-20s %-20s%n", timestamp, montoOrigen[0], montoOrigen[1], montoDestino[1]);
+        this.rutaArchivo = GestorConfiguracion.obtener("historial.file.path");
+        this.autoGuardar = GestorConfiguracion.obtenerBoolean("historial.auto.save");
+        this.conversiones = GestorArchivos.cargarHistorialJSON(rutaArchivo);
+        
+        if (conversiones.size() > 0) {
+            System.out.println("📂 Historial cargado: " + conversiones.size() + " conversiones");
         }
+    }
+
+    /**
+     * Agrega una nueva conversión al historial
+     */
+    public void agregarConversion(String monedaOrigen, String monedaDestino, 
+                                 double montoOrigen, double montoDestino) {
+        Conversion conversion = new Conversion(monedaOrigen, monedaDestino, montoOrigen, montoDestino);
+        conversiones.add(conversion);
+        
+        if (autoGuardar) {
+            guardar();
+        }
+    }
+
+    /**
+     * Guarda el historial en archivo JSON
+     */
+    public void guardar() {
+        GestorArchivos.guardarHistorialJSON(conversiones, rutaArchivo);
+    }
+
+    /**
+     * Exporta el historial a formato CSV
+     */
+    public void exportarCSV(String rutaArchivo) {
+        GestorArchivos.exportarCSV(conversiones, rutaArchivo);
+    }
+
+    /**
+     * Limpia todo el historial
+     */
+    public void limpiar() {
+        conversiones.clear();
+        guardar();
+        System.out.println("🗑️  Historial limpiado");
+    }
+
+    /**
+     * Muestra el historial de conversiones en formato tabular
+     */
+    public void mostrarHistorial() {
+        if (conversiones.isEmpty()) {
+            System.out.println("📭 El historial está vacío");
+            return;
+        }
+
+        System.out.println("\n📊 Historial de Conversiones:");
+        System.out.println("═".repeat(100));
+        System.out.printf("%-25s %-15s %-15s %-15s %-15s%n", 
+            "Fecha y Hora", "De", "Monto", "A", "Resultado");
+        System.out.println("─".repeat(100));
+        
+        for (Conversion c : conversiones) {
+            System.out.printf("%-25s %-15s %15.2f %-15s %15.2f%n",
+                c.getTimestamp().toString().replace("T", " ").substring(0, 19),
+                c.getMonedaOrigen(),
+                c.getMontoOrigen(),
+                c.getMonedaDestino(),
+                c.getMontoDestino()
+            );
+        }
+        System.out.println("═".repeat(100));
+        System.out.println("Total de conversiones: " + conversiones.size());
+    }
+
+    /**
+     * Obtiene el tamaño del historial
+     */
+    public int getTamaño() {
+        return conversiones.size();
     }
 }
