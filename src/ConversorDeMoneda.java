@@ -1,5 +1,7 @@
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import excepciones.ApiException;
+import excepciones.ConversionException;
 
 public class ConversorDeMoneda {
     private ConsultaTasaDeCambio consultaTasaDeCambio;
@@ -10,7 +12,16 @@ public class ConversorDeMoneda {
         historial = new HistorialConversiones();
     }
 
-    public double convertir(String monedaOrigen, String monedaDestino, double monto) {
+    /**
+     * Convierte un monto de una moneda a otra
+     * @param monedaOrigen Código de la moneda origen (ej: USD)
+     * @param monedaDestino Código de la moneda destino (ej: ARS)
+     * @param monto Monto a convertir
+     * @return Monto convertido en la moneda destino
+     * @throws ConversionException si hay error en la conversión
+     */
+    public double convertir(String monedaOrigen, String monedaDestino, double monto) 
+            throws ConversionException {
         try {
             // Obtener la tasa de cambio en formato JSON
             String respuestaJson = consultaTasaDeCambio.obtenerTasaDeCambio();
@@ -18,6 +29,21 @@ public class ConversorDeMoneda {
             // Parsear la respuesta JSON para obtener la tasa de cambio
             JsonObject jsonObject = JsonParser.parseString(respuestaJson).getAsJsonObject();
             JsonObject tasasDeCambio = jsonObject.getAsJsonObject("conversion_rates");
+
+            // Validar que las monedas existan
+            if (!tasasDeCambio.has(monedaOrigen)) {
+                throw new ConversionException(
+                    "❌ Moneda de origen no soportada: " + monedaOrigen + 
+                    "\n   Verifica el código de la moneda (debe ser de 3 letras, ej: USD, EUR, ARS)"
+                );
+            }
+
+            if (!tasasDeCambio.has(monedaDestino)) {
+                throw new ConversionException(
+                    "❌ Moneda de destino no soportada: " + monedaDestino + 
+                    "\n   Verifica el código de la moneda (debe ser de 3 letras, ej: USD, EUR, ARS)"
+                );
+            }
 
             // Obtener la tasa de cambio de las monedas de interés
             double tasaOrigen = tasasDeCambio.get(monedaOrigen).getAsDouble();
@@ -29,8 +55,17 @@ public class ConversorDeMoneda {
             // Agregar la conversión al historial
             historial.agregarConversion(monedaOrigen, monedaDestino, monto, montoEnDestino);
             return montoEnDestino; // Retornar el monto convertido
-        } catch (NullPointerException e) {
-            throw new RuntimeException("Error en la conversión de monedas. Verifique las monedas ingresadas.", e);
+            
+        } catch (ApiException e) {
+            throw new ConversionException(
+                "❌ Error al obtener tasas de cambio: " + e.getMessage(), 
+                e
+            );
+        } catch (Exception e) {
+            throw new ConversionException(
+                "❌ Error inesperado en la conversión: " + e.getMessage(), 
+                e
+            );
         }
     }
 

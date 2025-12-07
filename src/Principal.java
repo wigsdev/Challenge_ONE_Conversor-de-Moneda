@@ -91,8 +91,13 @@ public class Principal {
             double resultado = conversor.convertir(monedaOrigen, monedaDestino, monto);
             System.out.printf("✅ %.2f %s son equivalentes a %.2f %s.%n", 
                 monto, nombreOrigen, resultado, nombreDestino);
-        } catch (Exception e) {
-            System.out.println("❌ Error en la conversión: " + e.getMessage());
+        } catch (excepciones.ConversionException e) {
+            System.out.println("\n" + e.getMessage());
+            if (e.getCause() != null) {
+                System.out.println("💡 Causa: " + e.getCause().getMessage());
+            }
+        } catch (RuntimeException e) {
+            System.out.println("❌ Error inesperado: " + e.getMessage());
         }
     }
 }
