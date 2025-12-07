@@ -95,26 +95,26 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 ### 1.4 Manejo de Excepciones Mejorado ⚠️
 
-**Estado**: 🔄 En Progreso  
+**Estado**: ✅ Completado  
 **Prioridad**: 🟡 ALTA  
 **Estimación**: 4-5 horas
 
 #### Tareas
 - [x] Crear directorio `src/excepciones/`
-- [ ] Crear clase `ConversorException.java` (base abstracta)
-- [ ] Crear clase `ApiException.java`
-- [ ] Crear clase `ConversionException.java`
-- [ ] Crear clase `ValidacionException.java`
-- [ ] Modificar `ConsultaTasaDeCambio.java` para lanzar `ApiException`
-- [ ] Modificar `ConversorDeMoneda.java` para lanzar `ConversionException`
-- [ ] Implementar reintentos automáticos (máximo 3)
-- [ ] Implementar backoff exponencial
-- [ ] Agregar validación de monedas soportadas
-- [ ] Actualizar `Principal.java` para manejar excepciones
-- [ ] Probar con API key inválida
-- [ ] Probar con conexión a internet desactivada
-- [ ] Probar con monedas no soportadas
-- [ ] Verificar mensajes de error descriptivos
+- [x] Crear clase `ConversorException.java` (base abstracta)
+- [x] Crear clase `ApiException.java`
+- [x] Crear clase `ConversionException.java`
+- [x] Crear clase `ValidacionException.java`
+- [x] Modificar `ConsultaTasaDeCambio.java` para lanzar `ApiException`
+- [x] Modificar `ConversorDeMoneda.java` para lanzar `ConversionException`
+- [x] Implementar reintentos automáticos (máximo 3)
+- [x] Implementar backoff exponencial
+- [x] Agregar validación de monedas soportadas
+- [x] Actualizar `Principal.java` para manejar excepciones
+- [x] Probar con API key inválida
+- [x] Probar con conexión a internet desactivada
+- [x] Probar con monedas no soportadas
+- [x] Verificar mensajes de error descriptivos
 
 **Archivos Afectados**:
 - `src/excepciones/ConversorException.java` (nuevo)
@@ -366,17 +366,17 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 | Fase | Total Tareas | Completadas | Pendientes | Progreso |
 |------|--------------|-------------|------------|----------|
-| Fase 1 - Fundamentos | 42 | 32 | 10 | 76% |
+| Fase 1 - Fundamentos | 42 | 42 | 0 | 100% |
 | Fase 2 - Funcionalidades | 51 | 0 | 51 | 0% |
 | Fase 3 - UX | 42 | 0 | 42 | 0% |
-| **TOTAL** | **135** | **32** | **103** | **24%** |
+| **TOTAL** | **135** | **42** | **93** | **31%** |
 
 ### Por Prioridad
 
 | Prioridad | Total Tareas | Completadas | Pendientes |
 |-----------|--------------|-------------|------------|
-| 🔴 CRÍTICA | 32 | 28 | 4 |
-| 🟡 ALTA | 29 | 1 | 28 |
+| 🔴 CRÍTICA | 32 | 32 | 0 |
+| 🟡 ALTA | 29 | 10 | 19 |
 | 🟢 MEDIA | 44 | 0 | 44 |
 | 🟢 BAJA | 30 | 0 | 30 |
 
@@ -388,9 +388,10 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 2. ✅ Tarea 1.1: Externalizar API Key completada
 3. ✅ Tarea 1.2: Validación de Entrada completada
 4. ✅ Tarea 1.3: Persistencia del Historial completada
-5. 🔄 Tarea 1.4: Manejo de Excepciones en progreso
-6. [ ] Completar Fase 1
-7. [ ] Iniciar Fase 2
+5. ✅ Tarea 1.4: Manejo de Excepciones completada
+6. ✅ **FASE 1 COMPLETADA AL 100%** 🎉
+7. [ ] Iniciar Fase 2 - Funcionalidades
+8. [ ] Crear tag v1.1.0
 
 ---
 
@@ -404,6 +405,7 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 ---
 
 **Última Actualización**: 2025-12-06  
-**Versión del Documento**: 1.1  
-**Progreso Fase 1**: 76% (32 de 42 tareas completadas)  
+**Versión del Documento**: 1.2  
+**Progreso Fase 1**: 100% (42 de 42 tareas completadas) ✅  
+**Progreso Total**: 31% (42 de 135 tareas completadas)  
 **Mantenedor**: [mysterio-wil](https://github.com/mysterio-wil)
