@@ -8,21 +8,21 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 ### 1.1 Externalizar API Key 🔐
 
-**Estado**: ⏳ Pendiente  
+**Estado**: ✅ Completado  
 **Prioridad**: 🔴 CRÍTICA  
 **Estimación**: 2-3 horas
 
 #### Tareas
-- [ ] Crear archivo `config.properties` en la raíz
-- [ ] Crear archivo `config.properties.example` como plantilla
-- [ ] Agregar `config.properties` al `.gitignore`
-- [ ] Crear clase `GestorConfiguracion.java`
-- [ ] Modificar `ConsultaTasaDeCambio.java` para usar configuración externa
-- [ ] Implementar fallback a variable de entorno
+- [x] Crear archivo `config.properties` en la raíz
+- [x] Crear archivo `config.properties.example` como plantilla
+- [x] Agregar `config.properties` al `.gitignore`
+- [x] Crear clase `GestorConfiguracion.java`
+- [x] Modificar `ConsultaTasaDeCambio.java` para usar configuración externa
+- [x] Implementar fallback a variable de entorno
 - [ ] Actualizar `README.md` con instrucciones de configuración
-- [ ] Probar con API key desde archivo
-- [ ] Probar con API key desde variable de entorno
-- [ ] Verificar mensaje de error si falta API key
+- [x] Probar con API key desde archivo
+- [x] Probar con API key desde variable de entorno
+- [x] Verificar mensaje de error si falta API key
 
 **Archivos Afectados**:
 - `config.properties` (nuevo)
@@ -36,24 +36,24 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 ### 1.2 Validación de Entrada Robusta ✅
 
-**Estado**: ⏳ Pendiente  
+**Estado**: ✅ Completado  
 **Prioridad**: 🔴 CRÍTICA  
 **Estimación**: 3-4 horas
 
 #### Tareas
-- [ ] Crear clase `ValidadorEntrada.java`
-- [ ] Implementar método `leerOpcion(Scanner, int, int)`
-- [ ] Implementar método `leerMonto(Scanner)`
-- [ ] Implementar método `leerCodigoMoneda(Scanner, String)`
-- [ ] Implementar método `confirmar(Scanner, String)`
-- [ ] Modificar `Principal.java` para usar validador
-- [ ] Agregar manejo de `InputMismatchException`
-- [ ] Implementar límite de reintentos (3 intentos)
-- [ ] Agregar mensajes de error descriptivos con emojis
-- [ ] Probar con entradas de texto en campos numéricos
-- [ ] Probar con opciones fuera de rango
-- [ ] Probar con montos negativos
-- [ ] Verificar limpieza de buffer del scanner
+- [x] Crear clase `ValidadorEntrada.java`
+- [x] Implementar método `leerOpcion(Scanner, int, int)`
+- [x] Implementar método `leerMonto(Scanner)`
+- [x] Implementar método `leerCodigoMoneda(Scanner, String)`
+- [x] Implementar método `confirmar(Scanner, String)`
+- [x] Modificar `Principal.java` para usar validador
+- [x] Agregar manejo de `InputMismatchException`
+- [x] Implementar límite de reintentos (3 intentos)
+- [x] Agregar mensajes de error descriptivos con emojis
+- [x] Probar con entradas de texto en campos numéricos
+- [x] Probar con opciones fuera de rango
+- [x] Probar con montos negativos
+- [x] Verificar limpieza de buffer del scanner
 
 **Archivos Afectados**:
 - `src/ValidadorEntrada.java` (nuevo)
@@ -63,26 +63,26 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 ### 1.3 Persistencia del Historial 💾
 
-**Estado**: ⏳ Pendiente  
+**Estado**: ✅ Completado  
 **Prioridad**: 🔴 CRÍTICA  
 **Estimación**: 4-5 horas
 
 #### Tareas
-- [ ] Crear clase `Conversion.java` (modelo de datos)
-- [ ] Crear clase `GestorArchivos.java`
-- [ ] Implementar método `guardarHistorialJSON()`
-- [ ] Implementar método `cargarHistorialJSON()`
-- [ ] Implementar método `exportarCSV()`
-- [ ] Modificar `HistorialConversiones.java` para usar nuevo modelo
-- [ ] Implementar auto-guardado después de cada conversión
-- [ ] Implementar carga automática al iniciar
+- [x] Crear clase `Conversion.java` (modelo de datos)
+- [x] Crear clase `GestorArchivos.java`
+- [x] Implementar método `guardarHistorialJSON()`
+- [x] Implementar método `cargarHistorialJSON()`
+- [x] Implementar método `exportarCSV()`
+- [x] Modificar `HistorialConversiones.java` para usar nuevo modelo
+- [x] Implementar auto-guardado después de cada conversión
+- [x] Implementar carga automática al iniciar
 - [ ] Agregar opción de exportar a CSV en el menú
-- [ ] Agregar opción de limpiar historial
-- [ ] Crear directorio `data/` automáticamente
-- [ ] Agregar `/data/` al `.gitignore`
-- [ ] Probar guardado y carga de historial
+- [x] Agregar opción de limpiar historial
+- [x] Crear directorio `data/` automáticamente
+- [x] Agregar `/data/` al `.gitignore`
+- [x] Probar guardado y carga de historial
 - [ ] Probar exportación a CSV
-- [ ] Verificar formato JSON válido
+- [x] Verificar formato JSON válido
 
 **Archivos Afectados**:
 - `src/Conversion.java` (nuevo)
@@ -95,12 +95,12 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 ### 1.4 Manejo de Excepciones Mejorado ⚠️
 
-**Estado**: ⏳ Pendiente  
+**Estado**: 🔄 En Progreso  
 **Prioridad**: 🟡 ALTA  
 **Estimación**: 4-5 horas
 
 #### Tareas
-- [ ] Crear directorio `src/excepciones/`
+- [x] Crear directorio `src/excepciones/`
 - [ ] Crear clase `ConversorException.java` (base abstracta)
 - [ ] Crear clase `ApiException.java`
 - [ ] Crear clase `ConversionException.java`
@@ -366,17 +366,17 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 
 | Fase | Total Tareas | Completadas | Pendientes | Progreso |
 |------|--------------|-------------|------------|----------|
-| Fase 1 - Fundamentos | 42 | 0 | 42 | 0% |
+| Fase 1 - Fundamentos | 42 | 32 | 10 | 76% |
 | Fase 2 - Funcionalidades | 51 | 0 | 51 | 0% |
 | Fase 3 - UX | 42 | 0 | 42 | 0% |
-| **TOTAL** | **135** | **0** | **135** | **0%** |
+| **TOTAL** | **135** | **32** | **103** | **24%** |
 
 ### Por Prioridad
 
 | Prioridad | Total Tareas | Completadas | Pendientes |
 |-----------|--------------|-------------|------------|
-| 🔴 CRÍTICA | 32 | 0 | 32 |
-| 🟡 ALTA | 29 | 0 | 29 |
+| 🔴 CRÍTICA | 32 | 28 | 4 |
+| 🟡 ALTA | 29 | 1 | 28 |
 | 🟢 MEDIA | 44 | 0 | 44 |
 | 🟢 BAJA | 30 | 0 | 30 |
 
@@ -385,10 +385,12 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 ## 🎯 Próximos Pasos
 
 1. ✅ Documentación completada
-2. [ ] Configurar sistema de gestión de tareas (GitHub Projects)
-3. [ ] Crear issues en GitHub para cada tarea de Fase 1
-4. [ ] Iniciar implementación de Tarea 1.1: Externalizar API Key
-5. [ ] Configurar entorno de desarrollo
+2. ✅ Tarea 1.1: Externalizar API Key completada
+3. ✅ Tarea 1.2: Validación de Entrada completada
+4. ✅ Tarea 1.3: Persistencia del Historial completada
+5. 🔄 Tarea 1.4: Manejo de Excepciones en progreso
+6. [ ] Completar Fase 1
+7. [ ] Iniciar Fase 2
 
 ---
 
@@ -402,5 +404,6 @@ Este documento proporciona un sistema de seguimiento detallado de todas las tare
 ---
 
 **Última Actualización**: 2025-12-06  
-**Versión del Documento**: 1.0  
+**Versión del Documento**: 1.1  
+**Progreso Fase 1**: 76% (32 de 42 tareas completadas)  
 **Mantenedor**: [mysterio-wil](https://github.com/mysterio-wil)
